@@ -468,17 +468,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7}
---- !u!114 &85980473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 85980469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d48b15466a43d4f44a397377dcd8692d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &88131497
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,6 +663,7 @@ GameObject:
   - 92: {fileID: 113109262}
   - 124: {fileID: 113109261}
   - 81: {fileID: 113109260}
+  - 114: {fileID: 113109265}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -748,6 +738,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &113109265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 113109259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf1860074b8b8c449792e1a74d48ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelNum: 1
+  batPrefab: {fileID: 113190, guid: 329e43fe405914c4681942d4917e148f, type: 2}
 --- !u!1 &118210423
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,9 +998,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 1.0959797, y: 0}
+  m_Offset: {x: 2.6713047, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2.2855616, y: 0.70000017}
+  m_Size: {x: 5.436219, y: 0.70000017}
 --- !u!1 &302847928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1128,7 @@ GameObject:
   - 222: {fileID: 304643180}
   - 114: {fileID: 304643179}
   m_Layer: 5
-  m_Name: Text
+  m_Name: hpNum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1370,9 +1373,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.81637, y: 0}
+  m_Offset: {x: -2.8752794, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.7458758, y: 0.70000017}
+  m_Size: {x: 5.863693, y: 0.70000017}
 --- !u!1 &415043422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,7 +1835,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 605888741}
   - 50: {fileID: 605888742}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Boundaries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1909,6 +1912,10 @@ Prefab:
     - target: {fileID: 490908, guid: 84310d1e734c4c34bb432785833411c5, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 158098, guid: 84310d1e734c4c34bb432785833411c5, type: 2}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84310d1e734c4c34bb432785833411c5, type: 2}
@@ -2854,7 +2861,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 430286, guid: 1cfe9b377d20d2d4cab36eda4d6801d3, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 172872, guid: 1cfe9b377d20d2d4cab36eda4d6801d3, type: 2}
       propertyPath: m_Layer
@@ -3244,6 +3251,10 @@ Prefab:
       propertyPath: m_Name
       value: lollipopBaseBrown (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 158098, guid: 84310d1e734c4c34bb432785833411c5, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84310d1e734c4c34bb432785833411c5, type: 2}
   m_IsPrefabParent: 0
@@ -3547,6 +3558,7 @@ GameObject:
   - 50: {fileID: 1801010775}
   - 60: {fileID: 1801010774}
   - 114: {fileID: 1801010778}
+  - 95: {fileID: 1801010779}
   m_Layer: 0
   m_Name: SlimeJim
   m_TagString: Untagged
@@ -3634,7 +3646,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1801010773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.10796884, y: -3.998, z: 0}
+  m_LocalPosition: {x: -0.10796884, y: -4.01, z: 0}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3655,6 +3667,25 @@ MonoBehaviour:
   jumps: 5
   health: 10
   scoreText: {fileID: 103372776}
+  score: 0
+  hpNum: {fileID: 304643179}
+--- !u!95 &1801010779
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1801010773}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc356f5653980e74d9a2f8ff0e0a6ba1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1874121888
 GameObject:
   m_ObjectHideFlags: 0
@@ -4313,6 +4344,10 @@ Prefab:
     - target: {fileID: 490908, guid: 84310d1e734c4c34bb432785833411c5, type: 2}
       propertyPath: m_LocalScale.y
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 158098, guid: 84310d1e734c4c34bb432785833411c5, type: 2}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84310d1e734c4c34bb432785833411c5, type: 2}
