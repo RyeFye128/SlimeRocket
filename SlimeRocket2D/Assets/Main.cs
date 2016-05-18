@@ -4,7 +4,6 @@ using System.Collections;
 public class Main : MonoBehaviour {
     public int levelNum = 1;
     private GameObject[] bats;
-    private int batHeight = 2;
     public GameObject batPrefab;
 
  

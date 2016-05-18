@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class SlimeController : MonoBehaviour {
 
 	public float speed = .05f;
-	private SpriteRenderer sp;//lets me flip the sprite
 	private Rigidbody2D slime;
 	public float jumpPower = 100f;
 	public int jumps = 5;
@@ -15,13 +14,21 @@ public class SlimeController : MonoBehaviour {
 	public int score = 0;
     public Text hpNum;
     private Animator anim;
+    public bool leftPressed = false;
+    public bool rightPressed = false;
+
+    public Button left;
+    public Button right;
+    public Button space;
 
 	// Use this for initialization
 	void Start () {
 
-		sp = GetComponent<SpriteRenderer> ();
 		slime = GetComponent<Rigidbody2D> ();
         anim = GetComponent<Animator>();
+        left = GetComponent <SlimeController>().left;
+        right = GetComponent<SlimeController>().right;
+        space = GetComponent<SlimeController>().space;
 		//scoreText = GetComponent<Text> ();
 	
 	}
@@ -29,14 +36,14 @@ public class SlimeController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-
+       
         if (score >= 20)//load level 2
         {
             SceneManager.LoadScene("level2");
 
         }
 
-		if (Input.GetKey(KeyCode.LeftArrow)) {
+        if ((Input.GetKey(KeyCode.LeftArrow)) ||(left.GetComponent<moveLeft>().buttonPressed()))  {
 
 			transform.position += Vector3.left * speed * Time.deltaTime;
 			//sp.flipX = false;
@@ -44,15 +51,14 @@ public class SlimeController : MonoBehaviour {
 
 		}
 
-		if (Input.GetKey(KeyCode.RightArrow)) {
+        if ((Input.GetKey(KeyCode.RightArrow)) ||(right.GetComponent<moveRight>().buttonPressed())){
 
 			transform.position += Vector3.right * speed * Time.deltaTime;
 			//sp.flipX = true;//flip the sprite
             anim.SetBool("goingRight", true);
 		}
 
-		if ((Input.GetKeyDown(KeyCode.Space) 
-			|| (Input.touchCount >0  && Input.GetTouch(0).phase == TouchPhase.Began ))
+        if ((Input.GetKeyDown(KeyCode.Space)) 
 			&& (jumps > 0)) {
 
 			slime.AddForce (transform.up * jumpPower);
@@ -65,9 +71,9 @@ public class SlimeController : MonoBehaviour {
 	{
         if (col.collider.gameObject.layer == LayerMask.NameToLayer("enemy")) {
             //if hit, lower the score. if less than 20, set to 0.
-            if (score >= 20)
+            if (score >= 3)
             {
-                score -= 20;
+                score -= 3;
             }
             else
             {
@@ -89,4 +95,14 @@ public class SlimeController : MonoBehaviour {
 
         hpNum.text = health.ToString();
 	}
+        
+    public void onClickJump()
+    {
+        if (jumps > 0)
+        {
+            slime.AddForce (transform.up * jumpPower);
+            jumps--; //decrement the jumps
+            anim.SetBool("in air", true);
+        }
+    }
 }
